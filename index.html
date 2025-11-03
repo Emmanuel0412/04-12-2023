@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para mi amor ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f1d5b9;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Corazones de fondo */
+    .heart-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .heart-bg span {
+      position: absolute;
+      bottom: -50px;
+      color: #ffffffcc;
+      font-size: 1.2rem;
+      animation: flotar 8s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 20px;
+      color: #000;
+      position: relative;
+      z-index: 1;
+    }
+
+    .polaroid-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .polaroid {
+      background: #fff;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transform: rotate(-2deg);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.05);
+    }
+
+    .polaroid img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .hearts {
+      font-size: 2em;
+      color: #7b1e3b;
+      margin: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contador {
+      font-size: 1.2em;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Carta y sobre */
+    .carta-boton {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    .carta-boton img {
+      width: 70px;
+      transition: transform 0.3s ease;
+    }
+
+    .carta-boton img:hover {
+      transform: scale(1.1);
+    }
+
+    .carta {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #f6e1b5;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      padding: 25px;
+      width: 90%;
+      max-width: 400px;
+      z-index: 20;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .carta::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 30px;
+      background: #e4c68b;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      position: absolute;
+      top: -30px;
+      left: 0;
+    }
+
+    .carta h2 {
+      text-align: center;
+      color: #7b1e3b;
+    }
+
+    .carta p {
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #d6c090;
+    }
+
+    .cerrar {
+      background-color: #7b1e3b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px;
+      cursor: pointer;
+      display: block;
+      margin: 15px auto 0;
+    }
+
+    footer {
+      margin-top: 50px;
+      color: #7b1e3b;
+      font-size: 1.5em;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Adaptabilidad */
+    @media (max-width: 768px) {
+      .polaroid img {
+        width: 180px;
+        height: 180px;
+      }
+      .carta-boton img {
+        width: 55px;
+      }
+      h1 {
+        font-size: 2em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .polaroid img {
+        width: 150px;
+        height: 150px;
+      }
+      .carta {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Corazones flotando -->
+  <div class="heart-bg" id="heartContainer"></div>
+
+  <!-- Botón de sobre -->
+  <button class="carta-boton" onclick="mostrarCarta()">
+    <img src="carta.jpg" alt="Sobre de amor">
+  </button>
+
+  <!-- Carta -->
+  <div class="carta" id="carta">
+    <h2>💌 De Mi Para Ti 💌</h2>
+    <p>
+      Hola mi niña hermosa 💖.
+      Quiero recortarte lo mucho te amo 🥰.
+      Quiero agradecerte por estar aqui con migo, por
+      preocuparte por mi. 🥰
+
+      Alguna vez me preguntaste que por que te amo,
+      y te amo por lo maravillosa que eres con migo, 
+      por la perfecta mujer que eres, por que eres la creacion de 
+      de nuestro creador, por que mi amor va mas haya de lo que
+      el mundo puede comprender, te amo asi como Plankton ama karen,
+      tambien como ama Homero a Marge Simpson, te amo como
+      Fred y Wilma Picapiedra se aman, daria mi vida por ti ❤️.
+      Eres mi razon de existir por el cual yo vivo, por el cual 
+      me despierto cada mañana, eres mi niña hermosa a la que cuidare con mi 
+      vida.
+      
+      Con amor para ti ❤️.                               
+      ATTE. Tu Compañero de aventuras, amigo, amante,
+      confidente, tu hombre que te ama ❤️.
+    </p>
+    <button class="cerrar" onclick="cerrarCarta()">Cerrar</button>
+  </div>
+
+  <h1>Te quiero ❤️</h1>
+
+  <div class="polaroid-container">
+    <div class="polaroid"><img src="amoruno.jpg" alt="Foto 1"></div>
+    <div class="polaroid"><img src="amordos.jpg" alt="Foto 2"></div>
+    <div class="polaroid"><img src="amortres.jpg" alt="Foto 3"></div>
+  </div>
+
+  <footer>
+    <div class="hearts">❤️ ❤️ ❤️</div>
+    <div class="contador">
+      Llevamos juntos <span id="dias"></span> días, el inicio de toda una vida amor  💞
+    </div>
+  </footer>
+
+  <script>
+    // Fecha de inicio de la relación (modifícala)
+    const fechaInicio = new Date("2023-12-04");
+    const hoy = new Date();
+    const diferencia = hoy - fechaInicio;
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    document.getElementById("dias").textContent = dias;
+
+    // Mostrar y cerrar carta
+    function mostrarCarta() {
+      document.getElementById("carta").style.display = "block";
+    }
+    function cerrarCarta() {
+      document.getElementById("carta").style.display = "none";
+    }
+
+    // Corazones suaves de fondo 🤍
+    const heartContainer = document.getElementById('heartContainer');
+
+    function crearCorazon() {
+      const span = document.createElement('span');
+      span.textContent = '🤍';
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.animationDuration = (6 + Math.random() * 4) + 's';
+      span.style.fontSize = (Math.random() * 1.2 + 1) + 'rem';
+      span.style.opacity = Math.random();
+      heartContainer.appendChild(span);
+
+      // Eliminar cuando termina la animación
+      setTimeout(() => {
+        span.remove();
+      }, 10000);
+    }
+
+    // Crear corazones de manera continua
+    setInterval(crearCorazon, 400);
+  </script>
+
+</body>
+</html>
